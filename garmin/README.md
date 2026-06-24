@@ -38,48 +38,42 @@ garmin/
 
 ```bash
 # Создать виртуальное окружение
-python -m venv D:\OpenCode\.venv
+python -m venv .venv
+
+# Активировать
+.venv\Scripts\activate
 
 # Установить зависимости
-D:\OpenCode\.venv\Scripts\pip install -r D:\OpenCode\requirements.txt
+pip install -r requirements.txt
 ```
 
-Все команды ниже используют Python из `.venv`. В `opencode.json` прописан путь `D:\OpenCode\.venv\Scripts\python.exe`.
-
-### 1. Текстовый отчёт (`/garmin-sync`)
-
-Команда `/garmin-sync` в OpenCode запускает `garmin/export.py`. Модель получает текстовый отчёт и анализирует его.
-
-### 2. Детальный JSON тренировки (`/garmin-inspect`)
-
-Команда `/garmin-inspect` в OpenCode запускает `garmin/inspect_activity.py` с параметрами из аргумента. Модель анализирует JSON и выдаёт разбор.
-
-Примеры вызова:
-```
-/garmin-inspect --date 2026-06-24
-/garmin-inspect --days 3
-/garmin-inspect --date 2026-06-24 --output activity.json
-```
-
-Или вручную из `.venv`:
-
-Формат `--output` сохраняет JSON на диск. Нужен для глубокого анализа тренировки: лапы, телеметрия по секундам, координаты, стамина.
-
-Пример ручного запуска:
-```bash
-D:\OpenCode\.venv\Scripts\python.exe garmin/inspect_activity.py --date 2026-06-24
-D:\OpenCode\.venv\Scripts\python.exe garmin/inspect_activity.py --days 3
-D:\OpenCode\.venv\Scripts\python.exe garmin/inspect_activity.py --date 2026-06-24 --output activity.json
-```
-
-### 3. Красивый вывод JSON (`format_activity.py`)
-
-Форматирует JSON-файл из inspect_activity.py в читаемый вид. По умолчанию — анализ по километрам.
+### 1. Получение токена (однократно)
 
 ```bash
-D:\OpenCode\.venv\Scripts\python.exe garmin/format_activity.py garmin/activity.json
-D:\OpenCode\.venv\Scripts\python.exe garmin/format_activity.py garmin/activity.json --label "Забег 24.06"
-D:\OpenCode\.venv\Scripts\python.exe garmin/format_activity.py garmin/activity.json --raw --sample 10
+python garmin/get_api_token.py
+# Ввести email и пароль от Garmin Connect
+# При 2FA — ввести код из письма
+```
+
+### 2. Текстовый отчёт
+
+```bash
+python garmin/export.py
+```
+
+### 3. Детальный JSON тренировки
+
+```bash
+python garmin/inspect_activity.py --days 3
+python garmin/inspect_activity.py --date 2026-12-25
+python garmin/inspect_activity.py --date 2026-12-25 --output activity.json
+```
+
+### 4. Красивый вывод JSON
+
+```bash
+python garmin/format_activity.py garmin/activity.json
+python garmin/format_activity.py garmin/activity.json --raw --sample 10
 ```
 
 Флаги:

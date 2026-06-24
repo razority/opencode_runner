@@ -2,6 +2,8 @@
 .env
 .garminconnect/
 garmin/.garminconnect/
+garmin/reports/
 __pycache__/
 *.pyc
 *.json
+last_activity*.json
