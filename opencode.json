@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "command": {
+    "garmin-sync": {
+      "description": "Стянуть данные с Garmin Connect и проанализировать метрики",
+      "template": "Сначала выполни `.venv\\Scripts\\python.exe garmin/export.py`, чтобы получить свежие данные с Garmin. Затем проанализируй их по протоколу тренера: RHR, HRV, Wake Body Battery, сон, стресс, Body Battery charge/drain, тренировки по зонам. Сравни с планом. Выдай краткий отчёт ($ARGUMENTS)."
+    },
+    "garmin-inspect": {
+      "description": "Детальный JSON одной тренировки с погодой и телеметрией",
+      "template": "Выполни `.venv\\Scripts\\python.exe garmin/inspect_activity.py` ($ARGUMENTS). Проанализируй: погодные условия, лапы, темп по км, телеметрию (каденс, вертикальные колебания, ground contact, стамина). Выдай краткий разбор ($ARGUMENTS)."
+    }
+  }
+}
