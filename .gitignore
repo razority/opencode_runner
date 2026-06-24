@@ -1,0 +1,7 @@
+# Garmin credentials
+.env
+.garminconnect/
+garmin/.garminconnect/
+__pycache__/
+*.pyc
+*.json
