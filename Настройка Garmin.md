@@ -27,7 +27,6 @@ python -m pip install --upgrade pip
 
 ```powershell
 pip install garminconnect
-pip install pandas
 ```
 
 ## 3. Получение API-ключа
@@ -56,7 +55,7 @@ python -c "from garminconnect import Garmin; client = Garmin('email', 'password'
 
 ## 5. Формат отчёта
 
-После синка данные оформляются по шаблону из `Форматы отчётов.md`.
+После синка данные оформляются по протоколу из `Анализ тренировок.md`.
 
 ## Если Garmin нет
 
